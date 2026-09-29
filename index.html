@@ -200,9 +200,12 @@ main,footer{position:relative;z-index:2;overflow-x:clip}
 .info h3{margin:0 0 8px;font-size:19px;line-height:1.3;color:#f2f2f2;font-weight:600;text-wrap:balance}
 .info p{margin:0;font-size:14.5px;line-height:1.6;color:#a8a8a8}
 .info .chips{margin-top:14px}
-.info .links{display:flex;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-.info .links a{font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#dcdcdc;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
-.info .links a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.info .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.info .links a{font-family:var(--sans);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#e6e6e6;text-decoration:none;display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:8px 12px;transition:background .3s,color .3s,border-color .3s}
+.info .links a:hover{background:#eee;color:#000;border-color:#eee}
+.info .links a.live{background:#e9e9e9;color:#000;border-color:#e9e9e9}
+.info .links a.live:hover{background:#fff;box-shadow:0 0 18px rgba(255,255,255,.35)}
+.info .links .soon{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6f6f6f;display:inline-flex;align-items:center;padding:8px 2px}
 .info .links svg{width:15px;height:15px}
 .car-btn{position:absolute;top:170px;z-index:20;width:54px;height:54px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#eee;cursor:pointer;display:grid;place-items:center;transition:background .3s,border-color .3s}
 .car-btn:hover{background:rgba(255,255,255,.12);border-color:#fff}
@@ -697,13 +700,13 @@ var PROJECTS = [
    s:['Scikit-learn','Random Forest','Pandas'], r:null, doi:'https://doi.org/10.1109/ICFACT66887.2026.11518324'},
   {t:'SheetPilot — AI Spreadsheet Automation', gen:['sheetpilot','=GEMINI("clean + chart")'], tag:'GenAI · Automation',
    d:'AI-powered spreadsheet automation copilot using Gemini, Pandas and Streamlit, with voice commands and Excel VBA generation.',
-   s:['Gemini','Pandas','Streamlit','VBA'], r:'sheetpilot-ai-spreadsheet-automation'},
+   s:['Gemini','Pandas','Streamlit','VBA'], r:'sheetpilot-ai-spreadsheet-automation', demo:'https://sheetpilot-ai-spreadsheet-automation.streamlit.app/'},
   {t:'Page Pulse — URL Audit Service', gen:['page-pulse','GET /audit?url=… 200 OK'], tag:'FastAPI · Production',
    d:'Production-ready URL audit service built with FastAPI, featuring validation, caching, rate limiting, structured logging, testing and CI/CD.',
-   s:['FastAPI','Caching','CI/CD','Pytest'], r:'page-pulse-production'},
+   s:['FastAPI','Caching','CI/CD','Pytest'], r:'page-pulse-production', demo:'https://page-pulse-production.onrender.com/docs'},
   {t:'Pulse Module Extraction AI Agent', gen:['pulse-agent','docs → modules → JSON'], tag:'Agentic AI',
    d:'Agentic AI system that reads product documentation and extracts its modules and sub-modules into structured output.',
-   s:['Python','LLM Agents','NLP'], r:'pulse-module-extraction-ai-agent'},
+   s:['Python','LLM Agents','NLP'], r:'pulse-module-extraction-ai-agent', video:'https://www.loom.com/share/d06fc4184a0947869b01f1bd420e3c78'},
   {t:'Binance Futures Trading Bot', gen:['futures-bot','LIMIT BUY 0.01 BTCUSDT'], tag:'Python CLI',
    d:'Python CLI trading bot for the Binance Futures Testnet supporting MARKET and LIMIT orders, with input validation, logging and secure API integration.',
    s:['Python','Binance API','Logging'], r:'binance-futures-trading-bot'},
@@ -721,9 +724,13 @@ PROJECTS.forEach(function(pj, i){
   var shot = pj.img ? '<img src="'+pj.img+'" alt="Preview of '+esc(pj.t)+'" loading="lazy">'
     : '<div class="gen"><span><b>'+esc(pj.gen[0])+'</b>$ '+esc(pj.gen[1])+'</span></div>';
   var links = '';
-  if (pj.r) links += '<a href="'+GH+pj.r+'" target="_blank" rel="noopener">'+ghIco+'Code</a>';
-  else links += '<a href="https://github.com/saro0923" target="_blank" rel="noopener">'+ghIco+'GitHub</a>';
+  var liveIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+  var playIco = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  if (pj.demo) links += '<a class="live" href="'+pj.demo+'" target="_blank" rel="noopener">'+liveIco+'Live Demo</a>';
+  if (pj.video) links += '<a class="live" href="'+pj.video+'" target="_blank" rel="noopener">'+playIco+'Demo Video</a>';
+  links += '<a href="'+(pj.r ? GH+pj.r : 'https://github.com/saro0923')+'" target="_blank" rel="noopener">'+ghIco+'GitHub</a>';
   if (pj.doi) links += '<a href="'+pj.doi+'" target="_blank" rel="noopener">Paper ↗</a>';
+  if (!pj.demo && !pj.video && !pj.doi) links += '<span class="soon">Live demo soon</span>';
   el.innerHTML = '<div class="frame"><div class="shot">'+shot+'<span class="badge">'+esc(pj.tag)+'</span></div>'+
     '<div class="info"><h3>'+esc(pj.t)+'</h3><p>'+esc(pj.d)+'</p><div class="chips">'+
     pj.s.map(function(x){return '<span class="chip">'+esc(x)+'</span>';}).join('')+'</div><div class="links">'+links+'</div></div></div>';

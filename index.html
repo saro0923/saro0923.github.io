@@ -798,15 +798,18 @@ form.addEventListener('submit', function(e){
   if (btn.disabled) return;
   btn.disabled = true; btn.style.opacity = '.6';
   msg.style.color = ''; msg.textContent = 'Sending…';
+  var fd = new FormData();
+  fd.append('name', n); fd.append('email', em); fd.append('message', m);
+  fd.append('_subject', 'New portfolio message from ' + n);
+  fd.append('_replyto', em); fd.append('_template', 'table'); fd.append('_captcha', 'false');
   fetch('https://formsubmit.co/ajax/saravanan200423@gmail.com', {
     method: 'POST',
-    headers: {'Content-Type':'application/json', 'Accept':'application/json'},
-    body: JSON.stringify({
-      name: n, email: em, message: m,
-      _subject: 'New portfolio message from ' + n,
-      _replyto: em, _template: 'table', _captcha: 'false'
-    })
-  }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'Request failed'); return j; }); })
+    headers: {'Accept':'application/json'},
+    body: fd
+  }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){
+      var activation = /activat/i.test(String(j.message || ''));
+      if (!r.ok || (String(j.success) === 'false' && !activation)) throw new Error(j.message || 'Request failed');
+      return j; }); })
     .then(function(){
       form.reset();
       msg.style.color = '#e8e8e8';

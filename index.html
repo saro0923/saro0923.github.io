@@ -799,16 +799,16 @@ form.addEventListener('submit', function(e){
   btn.disabled = true; btn.style.opacity = '.6';
   msg.style.color = ''; msg.textContent = 'Sending…';
   var fd = new FormData();
-  fd.append('name', n); fd.append('email', em); fd.append('message', m);
-  fd.append('_subject', 'New portfolio message from ' + n);
-  fd.append('_replyto', em); fd.append('_template', 'table'); fd.append('_captcha', 'false');
-  fetch('https://formsubmit.co/ajax/saravanan200423@gmail.com', {
+  fd.append('access_key', '83ca137d-3bb6-4a17-81d1-7fa3b2b0ef19');
+  fd.append('subject', 'New portfolio message from ' + n);
+  fd.append('from_name', 'saro0923.github.io');
+  fd.append('name', n); fd.append('email', em); fd.append('replyto', em); fd.append('message', m);
+  fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: {'Accept':'application/json'},
     body: fd
   }).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){
-      var activation = /activat/i.test(String(j.message || ''));
-      if (!r.ok || (String(j.success) === 'false' && !activation)) throw new Error(j.message || 'Request failed');
+      if (!r.ok || j.success === false || String(j.success) === 'false') throw new Error(j.message || 'Request failed');
       return j; }); })
     .then(function(){
       form.reset();

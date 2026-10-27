@@ -11,7 +11,7 @@ B.Tech CSE (Artificial Intelligence & Machine Learning), SRM Institute of Scienc
 
 - **About** — background, education, skills and certifications
 - **What I Build** — RAG chatbots, multi-agent systems, predictive analytics, full-stack AI apps, REST APIs, GenAI tools
-- **Experience** — Software Developer intern at ARMSS Group of Companies; AI Summer Intern at Mirai School of Technology
+- **Experience** — Full-Stack Developer Intern at K12 Hunar; Software Developer intern at ARMSS Group of Companies; AI Summer Intern at Mirai School of Technology
 - **Projects** — 3D project carousel with live demos and source code
 - **Publication** — IEEE ICFACT 2026 paper
 - **Contact** — form that delivers messages straight to my inbox
@@ -29,6 +29,16 @@ B.Tech CSE (Artificial Intelligence & Machine Learning), SRM Institute of Scienc
 | Pulse Module Extraction AI Agent | [Demo video](https://www.loom.com/share/d06fc4184a0947869b01f1bd420e3c78) | [GitHub](https://github.com/saro0923/pulse-module-extraction-ai-agent) |
 | Binance Futures Trading Bot | — | [GitHub](https://github.com/saro0923/binance-futures-trading-bot) |
 | Mixar — Mesh Normalization & Quantization | — | [GitHub](https://github.com/saro0923/Mixar-Virtual-Assignment) |
+
+## Experience
+
+| Role | Company | Period | Link |
+|---|---|---|---|
+| Full-Stack Developer Intern | K12 Hunar — Software Development team | Oct 2026 – Present | [k12hunar.com](https://www.k12hunar.com) |
+| Software Developer Intern | ARMSS Group of Companies | — | — |
+| AI Summer Intern | Mirai School of Technology | Jul 2026 – Aug 2026 | [GitHub](https://github.com/saro0923/Mirai-AI-Summer-Internship) |
+
+**K12 Hunar:** working on the company's CRM software as part of the Software Development team, contributing to the development and maintenance of live products — responsive user interfaces, backend functionality, API and database integration, and authentication with role-based access.
 
 ## Publication
 

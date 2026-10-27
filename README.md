@@ -15,7 +15,7 @@ B.Tech CSE (Artificial Intelligence & Machine Learning), SRM Institute of Scienc
 - **Projects** — 3D project carousel with live demos and source code
 - **Publication** — IEEE ICFACT 2026 paper
 - **Contact** — form that delivers messages straight to my inbox
-- **Resume** — [download PDF](https://saro0923.github.io/assets/Saravanan_S_Resume.pdf)
+- **Resume** — [download PDF](https://saro0923.github.io/assets/Saravanan_S_Resume_Oct2026.pdf)
 
 ## Featured projects
 
@@ -64,7 +64,7 @@ DOI: [10.1109/ICFACT66887.2026.11518324](https://doi.org/10.1109/ICFACT66887.202
     ├── proj-stock.jpg
     ├── proj-mental.jpg
     ├── proj-crop.jpg
-    └── Saravanan_S_Resume.pdf
+    └── Saravanan_S_Resume_Oct2026.pdf
 ```
 
 ## Run locally
